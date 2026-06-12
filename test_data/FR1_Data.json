@@ -1,0 +1,29 @@
+{
+    "validUserData":{
+        "FirstName":"Roshan",
+        "LastName":"Kumar",
+        "Address":"Pratap Nagar",
+        "City":"Jaiput",
+        "State":"Rajasthan",
+        "ZipCode":"302022",
+        "Phone":"7855434552",
+        "SSN":"123-45-6789",
+        "Username":"roshankrr",
+        "Password":"password",
+        "ConfirmPassword":"password"
+
+    },
+    "invalidUserData":{
+        "FirstName":"Roshan",
+        "LastName":"Kumar",
+        "Address":"Pratap Nagar",
+        "City":"Jaiput",
+        "State":"Rajasthan",
+        "ZipCode":"302022",
+        "Phone":"7855434552",
+        "SSN":"123-45-6789",
+        "Username":"roshankrr",
+        "Password":"password",
+        "ConfirmPassword":"wrongpassword"
+    }
+}
