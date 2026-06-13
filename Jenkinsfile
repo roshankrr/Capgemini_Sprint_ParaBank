@@ -29,5 +29,10 @@ pipeline {
                 sh 'npm run allure:generate'
             }
         }
+        stage('Open Allure Report') {
+            steps {
+                sh 'npm run allure:open'
+            }
+        }
     }
 }
