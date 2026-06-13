@@ -9,18 +9,18 @@ import {env} from "../../config/env";
 test.describe("TS-10: Transfer Funds Using API",()=>{
 
     test("TC-API-10: Validate Funds transfer between accounts using API",async({request,RegisterFixture})=>{
-        // Step 1: Get customer ID
+        // Step 1 Get customer ID
         let custIDFn= new GetCustId();
         const custId=await custIDFn.getCustID(request,data.Username,data.Password);
         console.log("Customer ID:",custId);
 
-        // Step 2: Get the default account (first account)
+        // Step 2 Get the default account (first account)
         let accountIDFn= new GetAccounts();
         let accounts=await accountIDFn.getAccounts(request);
         console.log("Accounts:",accounts);
         const fromAccountId=accounts[0].id;
 
-        // Step 3: Create a new account to transfer funds to
+        // Step 3 Create a new account to transfer funds to
         let createAccountResponse=await request.post(`${env.API_BASEURL}/createAccount?customerId=${custId}&newAccountType=1&fromAccountId=${fromAccountId}`,{
             headers:{
                 "Content-Type":"application/json",
@@ -32,7 +32,7 @@ test.describe("TS-10: Transfer Funds Using API",()=>{
         const toAccountId=newAccount.id;
         console.log("New Account ID:",toAccountId);
 
-        // Step 4: Transfer funds from default account to new account
+        // Step 4 Transfer funds from default account to new account
         const transferAmount=100;
         let transferResponse=await request.post(`${env.API_BASEURL}/transfer?fromAccountId=${fromAccountId}&toAccountId=${toAccountId}&amount=${transferAmount}`,{
             headers:{
@@ -43,7 +43,7 @@ test.describe("TS-10: Transfer Funds Using API",()=>{
         expect(transferResponse.status()).toBe(200);
         console.log("Transfer successful");
 
-        // Step 5: Verify the transaction using /transactions/{transactionId}
+        // Step 5 Verify the transaction using /transactions/{transactionId}
         // Get transactions for the toAccount to find the transfer transaction
         let transactionsResponse=await request.get(`${env.API_BASEURL}/accounts/${toAccountId}/transactions`,{
             headers:{
