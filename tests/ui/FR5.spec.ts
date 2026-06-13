@@ -12,7 +12,7 @@ test.use({
 })
 
 test.describe("TS-08:Transfer Funds Using UI",()=>{
-    test("TC-UI-08: Validate Funds transfer between accounts using UI",async({RegisterFixture})=>{
+    test("TC-UI-05: Validate Funds transfer between accounts using UI",async({RegisterFixture})=>{
         //opening new account to transfer funds
         let homePage=new HomePage(RegisterFixture);
         await homePage.navigatToService('Open New Account');
@@ -36,7 +36,7 @@ test.describe("TS-08:Transfer Funds Using UI",()=>{
         await homePage.navigatToService('Find Transactions');
     })
 
-    test.fixme("TC-UI-09: Validate Funds transfer with insufficient balance using UI",async({RegisterFixture})=>{
+    test.fixme("TC-UI-06: Validate Funds transfer with insufficient balance using UI",async({RegisterFixture})=>{
         //navigate to transfer funds
         let homePage=new HomePage(RegisterFixture);
         await homePage.navigatToService('Transfer Funds');
@@ -54,7 +54,7 @@ test.describe("TS-08:Transfer Funds Using UI",()=>{
 
 
 test.describe("TS-09:Transfer Funds Using UI with negitive cases",()=>{
-    test.fixme("TC-UI-10: Try transfering funds to different account with incorrect details",async({RegisterFixture})=>{
+    test.fixme("TC-UI-07: Try transfering funds to different account with incorrect details",async({RegisterFixture})=>{
         //opening new account to transfer funds
         let homePage=new HomePage(RegisterFixture);
         await homePage.navigatToService('Open New Account');
@@ -77,7 +77,7 @@ test.describe("TS-09:Transfer Funds Using UI with negitive cases",()=>{
         await homePage.navigatToService('Find Transactions');
     })
 
-    test.fixme("TC-UI-09: Validate Funds transfer with insufficient balance using UI",async({RegisterFixture})=>{
+    test.fixme("TC-UI-08: Validate Funds transfer with insufficient balance using UI",async({RegisterFixture})=>{
         //navigate to transfer funds
         let homePage=new HomePage(RegisterFixture);
         await homePage.navigatToService('Transfer Funds');
