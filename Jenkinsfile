@@ -30,24 +30,5 @@ pipeline {
             }
         }
     }
-    // post {
-    // always {
-
-    //     publishHTML([
-    //         allowMissing: true,
-    //         alwaysLinkToLastBuild: true,
-    //         keepAll: true,
-    //         reportDir: 'playwright-report',
-    //         reportFiles: 'index.html',
-    //         reportName: 'Playwright Report'
-    //     ])
-
-    //     allure([
-    //         includeProperties: false,
-    //         results: [[path: 'allure-results']]
-    //     ])
-
-    //     archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
-    // }
-}
+    
 }
