@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Allure Report') {
             steps {
-                sh 'npm run :allure:generate'
+                sh 'npm run allure:generate'
             }
         }
     }
