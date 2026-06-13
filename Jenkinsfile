@@ -1,11 +1,20 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'Nodejs'
-    }
-
     stages {
+
+        stage('Install NodeJS') {
+            steps {
+                sh '''
+                curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+                apt-get update
+                apt-get install -y nodejs
+
+                node -v
+                npm -v
+                '''
+            }
+        }
 
         stage('Install Dependencies') {
             steps {
@@ -23,13 +32,6 @@ pipeline {
             steps {
                 sh 'npm test'
             }
-        }
-    }
-
-    post {
-        always {
-            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
-            archiveArtifacts artifacts: 'allure-results/**', allowEmptyArchive: true
         }
     }
 }
