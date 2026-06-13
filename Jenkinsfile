@@ -7,11 +7,11 @@ pipeline {
 
     stages {
 
-        // stage('Install Dependencies') {
-        //     steps {
-        //         sh 'npm ci'
-        //     }
-        // }
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
 
         stage('Generate Auth State') {
             steps {
