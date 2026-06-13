@@ -9,16 +9,17 @@ import { AccountPage } from "../../pages/AccountPage.page";
 
 //Sceanario 1: User should be able to create an account with valid credentials
 test.describe("TS-01:Register and login  User Successfully",()=>{
-    test.only("TC-UI-01:Register User",async ({page})=>{
+    test("TC-UI-01:Register User",async ({page})=>{
         await page.goto('/');
         let welcome= new WelcomePage(page);
         await welcome.RegisterBTN.click();
         let registerPage=new RegisterPage(page);
         await registerPage.registerUser(data.validUserData);
         await SuccessMessage("Your account was created successfully. You are now logged in.",page);
+        await page.screenshot({ path: `screenshots/TC-UI-01-${Date.now()}.png` });
     })
 
-    test.only("TC-UI-02:Login after Register",async ({page})=>{
+    test("TC-UI-02:Login after Register",async ({page})=>{
         await page.goto('/');
         let welcome= new WelcomePage(page);
         await welcome.UNameINP.fill(data.validUserData.Username);
@@ -29,7 +30,7 @@ test.describe("TS-01:Register and login  User Successfully",()=>{
         let accountPage=new AccountPage(page);
         await accountPage.CreateNewAccountBTN.click();
         await expect(page.getByText('Account Opened')).toBeVisible();
-
+        await page.screenshot({ path: `screenshots/TC-UI-02-${Date.now()}.png` });
     })
 })
 
@@ -42,6 +43,7 @@ test.describe("TS-02:Register  User UnSuccessfully",()=>{
         let registerPage=new RegisterPage(page);
         await registerPage.RegisterBTN.click();
         await expect(await page.locator('//span[@class="error"]').count()).toBeGreaterThan(0);
+        await page.screenshot({ path: `screenshots/TC-UI-03-${Date.now()}.png` });
     })
 
     test("TC-UI-04:Register User with invalid confirm password",async ({page})=>{
@@ -52,6 +54,6 @@ test.describe("TS-02:Register  User UnSuccessfully",()=>{
         await registerPage.registerUser(data.invalidUserData);
 
         await expect(page.getByText('Passwords did not match')).toBeVisible();
-        
+        await page.screenshot({ path: `screenshots/TC-UI-04-${Date.now()}.png` });
     })
 })

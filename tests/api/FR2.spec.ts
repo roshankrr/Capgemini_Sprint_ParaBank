@@ -41,10 +41,12 @@ test.describe("TS-04: Get Accounts using api Negative Sceanario", ()=>{
         console.log("The user Account was not found with the given credentials");
     })
 
-    test.only("TC-API-04: Get Account details with wrong customer id",async({request,RegisterFixture})=>{
+    test("TC-API-04: Get Account details with wrong customer id",async({request,RegisterFixture})=>{
         const custId=99999;
         let accountResponse=await request.get(`${env.API_BASEURL}/customers/${custId}/accounts`);
         console.log(accountResponse);
+        test.expect(accountResponse.status()).toBe(400);
+        console.log("The user Account was not found with the given credentials and status code is also wrong as 400 instead of 404");
     })
 
 })

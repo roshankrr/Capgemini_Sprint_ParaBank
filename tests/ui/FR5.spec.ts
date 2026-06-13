@@ -30,6 +30,7 @@ test.describe("TS-08:Transfer Funds Using UI",()=>{
         await transferFundPage.AmountINP.fill('100');
         await transferFundPage.TransferBTN.click();
         await expect(RegisterFixture.getByText('Transfer Complete!')).toBeVisible();
+        await RegisterFixture.screenshot({ path: `screenshots/TC-UI-08-${Date.now()}.png` });
 
         //check the balance of the first account
         await homePage.navigatToService('Find Transactions');

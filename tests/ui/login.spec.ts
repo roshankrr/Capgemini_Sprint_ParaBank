@@ -8,4 +8,5 @@ test("Login with valid credentials",async({page})=>{
     await welcomePage.UNameINP.fill(data.Username);
     await welcomePage.UPassINP.fill(data.Password);
     await welcomePage.LoginBTN.click();
+    await page.screenshot({ path: `screenshots/Login-${Date.now()}.png` });
 })

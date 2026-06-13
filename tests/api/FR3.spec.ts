@@ -55,7 +55,7 @@ test.describe("TS-05: Validate New account creation using API", ()=>{
         //get the count of accounts after creating previous one to chekc
         let accountresponseAfter=await accountIDFn.getAccounts(request);
         const accountCountAfter=accountresponseAfter.length;
-        expect(accountCountAfter).toBeGreaterThan(accountCountBefore+1);
+        expect(accountCountAfter).toBeGreaterThanOrEqual(accountCountBefore+1);
         console.log("The newly account was created and verified successfully using API");
 
     })
@@ -66,7 +66,7 @@ test.describe("TS-05: Validate New account creation using API", ()=>{
 
 test.describe("TS-06: Get Accounts using API Negative Sceanario", ()=>{
 
-        test("TC-API-07: Validate New account creation with invalid customer id",async({request,RegisterFixture})=>{
+        test("TC-API-07: Validate New account creation with invalid accountid",async({request,RegisterFixture})=>{
             let custIDFn= new GetCustId();
         const custId=await custIDFn.getCustID(request,data.Username,data.Password);
         //create new account
