@@ -24,5 +24,10 @@ pipeline {
                 sh 'npm test'
             }
         }
+        stage('Allure Report') {
+            steps {
+                sh 'npm run :allure:generate'
+            }
+        }
     }
 }
